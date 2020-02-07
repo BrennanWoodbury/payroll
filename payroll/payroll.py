@@ -1,6 +1,7 @@
 import sys
 from employee import *
 
+
 #function to calculate total weekly earnings.
 def hourly():
     
@@ -16,22 +17,40 @@ def hourly():
         return(otime_pay)
     
 #calculate salaried pay    
-def salary():
-    pass
+def salary(pay_rate):
+    # pay_rate = input("Employee's Salary: ")
+    return pay_rate / 52
 
-
+def commission(sales, rate):
+    return sales * rate 
 
 #function to calculate paycheck over 2 weeks. 
 def pay_check():
+    if salary:
+        print(round(salary(65039), 2))
+    elif hourly:
+        hourly() + hourly()
+    elif commission:
+        print(round(commission(5000, .2), 2))
+   
 
-    return(hourly() + hourly())
+def how_paid():
+    answer = str(input("Is employee salary, hourly, or commission?\n")).lower
+
+    if answer == "hourly":
+        print(hourly() + hourly())
+    elif answer == "commission":
+        entry_1 = input("Gross sales: ")
+        entry_2 = input("Commission rate(ie .2 or .33): ")
+        print(commission(entry_1, entry_2))
+    elif answer == "salary":
+        sal = input("Salary: ").lower
+        print(salary(sal))
+    else:
+        print("Invalid entry")
+
+how_paid()
     
-    
-print(emp_1.first)
-print(pay_check())
-
-
-
-
-
+# print(emp_1.first)
+# print(pay_check())
 
