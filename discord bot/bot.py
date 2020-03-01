@@ -5,6 +5,7 @@ import discord
 import youtube_dl
 from discord.ext import commands
 from dotenv import load_dotenv
+from discord import FFmpegPCMAudio
 
 #dotenv in .env file
 load_dotenv()
@@ -146,7 +147,7 @@ class Music(commands.Cog):
         #plays a file form the local filesystem
 
         source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
-        ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+        ctx.voice_client.play(source, after=lambda e: print(f'Player error: {e}s') if e else None)
         await print(f'Now playing: {query}')
         await ctx.send(f'Now playing {query}')
 
